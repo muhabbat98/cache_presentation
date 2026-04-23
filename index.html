@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesh (Cache) - Senior Frontend Perspective</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css">
+    <style>
+        .reveal h1, .reveal h2 { color: #50fa7b; }
+        .reveal p { font-size: 0.9em; text-align: left; }
+        .highlight-box { background: #44475a; padding: 20px; border-radius: 10px; border-left: 5px solid #bd93f9; }
+        .author-footer { font-size: 0.5em !important; color: #6272a4; text-align: center !important; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h1>Kesh (Cache)</h1>
+                <h3>Senior Frontend Perspective</h3>
+                <p style="text-align: center;">Nega bu faqat backendchilarning ishi emas?</p>
+                <br>
+                <div class="author-footer">Spiker: Pulatova Mukhabbat<br>Senior Software Engineer</div>
+            </section>
+
+            <section>
+                <h2>Kesh haqidagi miflar 🚫</h2>
+                <ul>
+                    <li class="fragment">"Kesh faqat tokenni saqlash uchun"</li>
+                    <li class="fragment">"Frontendchi keshni boshqara olmaydi"</li>
+                    <li class="fragment">"Intervyuda keshdan so'rashmaydi"</li>
+                </ul>
+                <p class="fragment highlight-box" style="margin-top: 20px;">
+                    <strong>Haqiqat:</strong> Kesh — Performance va UX asosi. Senior bo'lish uchun uni boshqarishni bilish shart.
+                </p>
+            </section>
+
+            <section>
+                <h2>Kesh turlari</h2>
+                <div style="display: flex; gap: 20px;">
+                    <div class="highlight-box" style="flex: 1;">
+                        <h4>HTTP Cache</h4>
+                        <small>Browser va Server kelishuvi (Headers)</small>
+                    </div>
+                    <div class="highlight-box" style="flex: 1;">
+                        <h4>Service Worker</h4>
+                        <small>Cache API orqali dasturiy nazorat</small>
+                    </div>
+                    <div class="highlight-box" style="flex: 1;">
+                        <h4>Memory Cache</h4>
+                        <small>RAM'da qisqa muddatli saqlash</small>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>HTTP Headers (Asosiy qurol)</h2>
+                <pre><code class="javascript" data-trim>
+// Cache-Control turlari:
+Cache-Control: max-age=31536000 // 1 yil
+Cache-Control: no-store         // Hech narsani saqlama
+Cache-Control: no-cache         // Saqla, lekin har doim tekshir
+                </code></pre>
+                <p><strong>ETag:</strong> Fayl o'zgarganini tekshirish uchun xesh-kod.</p>
+            </section>
+
+            <section>
+                <h2>Amaliy Kod: Cache API</h2>
+                <pre><code class="javascript" data-trim contenteditable>
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((res) => {
+      // Cache First Strategiyasi
+      return res || fetch(event.request);
+    })
+  );
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Intervyu Savollari 🎤</h2>
+                <ol>
+                    <li class="fragment"><code>no-cache</code> vs <code>no-store</code>?</li>
+                    <li class="fragment">Keshni qanday majburan yangilash mumkin? (Versioning)</li>
+                    <li class="fragment">ETag qanday ishlaydi?</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Bilimni isbotlash (Manbalar)</h2>
+                <ul>
+                    <li><strong>MDN Web Docs:</strong> HTTP Caching Guide</li>
+                    <li><strong>Web.dev (Google):</strong> Prevent unnecessary network requests</li>
+                    <li><strong>High Performance Browser Networking:</strong> Ilya Grigorik</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>E'tiboringiz uchun rahmat!</h2>
+                <p style="text-align: center;">Savollaringiz bormi?</p>
+                <div class="author-footer">Pulatova Mukhabbat | GitHub: @mukhabbat-pulatova</div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            plugins: [ RevealHighlight ]
+        });
+    </script>
+</body>
+</html>
