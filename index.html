@@ -3,73 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kesh (Cache) - Senior Frontend Perspective</title>
+    <title>Kesh (Cache) - Senior Frontend Perspective | Pulatova Mukhabbat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/dracula.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css">
     <style>
-        .reveal h1, .reveal h2 { color: #50fa7b; }
-        .reveal p { font-size: 0.9em; text-align: left; }
-        .highlight-box { background: #44475a; padding: 20px; border-radius: 10px; border-left: 5px solid #bd93f9; }
-        .author-footer { font-size: 0.5em !important; color: #6272a4; text-align: center !important; }
+        :root { --r-main-font-size: 24px; }
+        .reveal h1, .reveal h2, .reveal h3 { color: #50fa7b; text-transform: none; }
+        .reveal h1 { font-size: 2.5em; }
+        .reveal h2 { border-bottom: 2px solid #50fa7b; padding-bottom: 10px; }
+        .reveal p { font-size: 1em; text-align: left; line-height: 1.6; }
+        .highlight-box { background: #44475a; padding: 25px; border-radius: 15px; border-left: 6px solid #bd93f9; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .author-footer { font-size: 0.6em !important; color: #6272a4; text-align: center !important; margin-top: 50px; }
+        .slide-img { max-height: 350px !important; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .flex-container { display: flex; align-items: center; gap: 30px; }
+        .flex-item { flex: 1; }
+        code { color: #ff79c6 !important; }
     </style>
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
 
-            <section>
+            <section data-background-image="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1920" data-background-opacity="0.2">
                 <h1>Kesh (Cache)</h1>
                 <h3>Senior Frontend Perspective</h3>
-                <p style="text-align: center;">Nega bu faqat backendchilarning ishi emas?</p>
-                <br>
+                <p style="text-align: center; font-size: 1.2em; color: #f8f8f2;">Nega bu faqat backendchilarning ishi emas?</p>
+                <img src="https://img.icons8.com/fluent/96/000000/database.png" alt="Database Icon" style="margin-top: 30px;">
                 <div class="author-footer">Spiker: Pulatova Mukhabbat<br>Senior Software Engineer</div>
             </section>
 
             <section>
                 <h2>Kesh haqidagi miflar 🚫</h2>
-                <ul>
-                    <li class="fragment">"Kesh faqat tokenni saqlash uchun"</li>
-                    <li class="fragment">"Frontendchi keshni boshqara olmaydi"</li>
-                    <li class="fragment">"Intervyuda keshdan so'rashmaydi"</li>
-                </ul>
-                <p class="fragment highlight-box" style="margin-top: 20px;">
-                    <strong>Haqiqat:</strong> Kesh — Performance va UX asosi. Senior bo'lish uchun uni boshqarishni bilish shart.
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <ul>
+                            <li class="fragment">"Kesh faqat tokenni saqlash uchun" 🔑</li>
+                            <li class="fragment">"Frontendchi keshni boshqara olmaydi" 🛑</li>
+                            <li class="fragment">"Intervyuda keshdan so'rashmaydi" 📉</li>
+                        </ul>
+                    </div>
+                    <div class="flex-item fragment">
+                        <img src="https://cdni.iconscout.com/illustration/premium/thumb/developer-failed-to-run-code-5381831-4501469.png" alt="Failed Developer Illustration" class="slide-img">
+                    </div>
+                </div>
+                <p class="fragment highlight-box" style="margin-top: 30px; font-size: 1.1em;">
+                    <strong>Haqiqat:</strong> Kesh — Performance va UX poydevori. Senior bo'lish uchun uni boshqarishni bilish shart. ✅
                 </p>
             </section>
 
             <section>
-                <h2>Kesh turlari</h2>
-                <div style="display: flex; gap: 20px;">
-                    <div class="highlight-box" style="flex: 1;">
-                        <h4>HTTP Cache</h4>
-                        <small>Browser va Server kelishuvi (Headers)</small>
+                <h2>Kesh qanday ishlaydi? (Flow) 🔄</h2>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <p>Foydalanuvchi so'rov yuborganda, brauzer avval keshni tekshiradi.</p>
+                        <ul>
+                            <li class="fragment"><strong>Hit:</strong> Ma'lumot keshdan topildi (Chaqmoqdek tez! ⚡️).</li>
+                            <li class="fragment"><strong>Miss:</strong> Kesh bo'sh, serverga borish kerak (Sekinroq 🐢).</li>
+                        </ul>
                     </div>
-                    <div class="highlight-box" style="flex: 1;">
-                        <h4>Service Worker</h4>
-                        <small>Cache API orqali dasturiy nazorat</small>
-                    </div>
-                    <div class="highlight-box" style="flex: 1;">
-                        <h4>Memory Cache</h4>
-                        <small>RAM'da qisqa muddatli saqlash</small>
+                    <div class="flex-item fragment">
+                        <img src="https://w7.pngwing.com/pngs/351/952/png-transparent-web-cache-cache-memory-computer-servers-memory-flow-chart-diagram-network-blue-angle-text.png" alt="Web Cache Flowchart" class="slide-img" style="background: white; padding: 10px;">
                     </div>
                 </div>
             </section>
 
             <section>
-                <h2>HTTP Headers (Asosiy qurol)</h2>
-                <pre><code class="javascript" data-trim>
+                <h2>HTTP Headers (Asosiy qurol) 🛡️</h2>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <pre><code class="javascript" data-trim>
 // Cache-Control turlari:
-Cache-Control: max-age=31536000 // 1 yil
+Cache-Control: max-age=31536000 // 1 yil saqla
 Cache-Control: no-store         // Hech narsani saqlama
 Cache-Control: no-cache         // Saqla, lekin har doim tekshir
-                </code></pre>
-                <p><strong>ETag:</strong> Fayl o'zgarganini tekshirish uchun xesh-kod.</p>
+                        </code></pre>
+                        <p style="margin-top: 15px;"><strong>ETag:</strong> Faylning "barmoq izi".</p>
+                    </div>
+                    <div class="flex-item fragment">
+                        <img src="https://web-dev.imgix.net/image/admin/V4U947w8fJ4x21u8V4U9.png?auto=format&w=845" alt="HTTP Cache Lifecycle" class="slide-img">
+                    </div>
+                </div>
             </section>
 
             <section>
-                <h2>Amaliy Kod: Cache API</h2>
-                <pre><code class="javascript" data-trim contenteditable>
+                <h2>Amaliy Kod: Cache API 💻</h2>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <pre><code class="javascript" data-trim contenteditable>
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((res) => {
@@ -78,31 +99,39 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
-                </code></pre>
+                        </code></pre>
+                        <p style="margin-top: 15px;">Service Worker orqali keshni dasturiy nazorat qilish.</p>
+                    </div>
+                    <div class="flex-item fragment">
+                        <img src="https://miro.medium.com/max/1400/1*v-p5Wp5Q5p5Q5p5Q5p5Q.png" alt="Service Worker Caching" class="slide-img">
+                    </div>
+                </div>
             </section>
 
             <section>
                 <h2>Intervyu Savollari 🎤</h2>
-                <ol>
-                    <li class="fragment"><code>no-cache</code> vs <code>no-store</code>?</li>
-                    <li class="fragment">Keshni qanday majburan yangilash mumkin? (Versioning)</li>
-                    <li class="fragment">ETag qanday ishlaydi?</li>
-                </ol>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <ol>
+                            <li class="fragment"><code>no-cache</code> vs <code>no-store</code>?</li>
+                            <li class="fragment">Keshni qanday majburan yangilash mumkin? (Versioning)</li>
+                            <li class="fragment">ETag qanday ishlaydi?</li>
+                        </ol>
+                    </div>
+                    <div class="flex-item fragment">
+                        <img src="https://cdni.iconscout.com/illustration/premium/thumb/job-interview-2839462-2364027.png" alt="Job Interview Illustration" class="slide-img">
+                    </div>
+                </div>
             </section>
 
-            <section>
-                <h2>Bilimni isbotlash (Manbalar)</h2>
-                <ul>
-                    <li><strong>MDN Web Docs:</strong> HTTP Caching Guide</li>
-                    <li><strong>Web.dev (Google):</strong> Prevent unnecessary network requests</li>
-                    <li><strong>High Performance Browser Networking:</strong> Ilya Grigorik</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>E'tiboringiz uchun rahmat!</h2>
-                <p style="text-align: center;">Savollaringiz bormi?</p>
-                <div class="author-footer">Pulatova Mukhabbat | GitHub: @mukhabbat-pulatova</div>
+            <section data-background-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1920" data-background-opacity="0.1">
+                <h2>E'tiboringiz uchun rahmat! 🎉</h2>
+                <p style="text-align: center; font-size: 1.3em; color: #f8f8f2;">Savollaringiz bormi?</p>
+                <img src="https://img.icons8.com/fluent/96/000000/thumbs-up.png" alt="Thumbs Up Icon" style="margin-top: 30px;">
+                <div class="author-footer">
+                    Pulatova Mukhabbat | Senior Software Engineer<br>
+                    GitHub: @mukhabbat-pulatova | LinkedIn: /in/mukhabbat-pulatova
+                </div>
             </section>
 
         </div>
@@ -113,7 +142,13 @@ self.addEventListener('fetch', (event) => {
     <script>
         Reveal.initialize({
             hash: true,
-            plugins: [ RevealHighlight ]
+            plugins: [ RevealHighlight ],
+            // Slaydlar orasidagi o'tish effekti
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            // Slayd o'lchamlari
+            width: 1200,
+            height: 700,
+            margin: 0.1
         });
     </script>
 </body>
